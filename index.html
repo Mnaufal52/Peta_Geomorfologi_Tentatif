@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang ='id'>
+    <!Head>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Peta Geomorfologi Daerah Simpang Empat</title>
+        <!-- Tailwind CSS via CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+       
+        <!-- Link ke file CSS -->
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+        <body class="bg-gray-100 font-sans">
+
+            <!-- Navigasi bar -->
+            <nav class = "navbar">
+                <h1 class = "logo">Peta Geomorfologi Tentatif</h1>
+                <h1 class="menu-toggle" onclick="toggleMenu()">&#9776;</h1>
+                <ul class = "menu">
+                    <li><a href = "https://mnaufal52.github.io/Dashboard_Pemilu_Bali/">Home</a></li>
+                    <li><a href = "https://mnaufal52.github.io/Peta-Geomorfologi/">See Full Screen</a></li>
+                    <li><a href = "https://www.linkedin.com/in/muhammadnaufal240502/">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+        <div class="container mx-auto mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Peta -->
+                <div class="bg-white p-4 shadow rounded">
+                 <h2 class="text-lg font-semibold mb-4">Peta Geomorfologi</h2>
+                <iframe src="https://mnaufal52.github.io/Peta-Geomorfologi/" class="w-full h-80 border rounded" allowfullscreen></iframe>
+            </div>
+
+         <!-- Diagram -->
+         <div class="bg-white p-4 shadow rounded">
+            <h2 class="text-lg font-semibold mb-4">Diagram Persentase Luas Area</h2>
+            <!---<canvas id="chart" class="w-full h-80"></canvas>--->
+            <!---<h2 style="text-align: center;">Total Suara Partai per Kabupaten/Kota</h2>--->
+            <canvas id="myChart" width="800" height="400"></canvas>
+        </div>
+
+        <script>
+            // Mengambil elemen canvas dengan id "myChart"
+            const ctx = document.getElementById('myChart').getContext('2d');
+        
+            // Membuat objek chart
+            const myChart = new Chart(ctx, {
+              type: 'pie', // Jenis chart: pie
+              data: {
+                labels: ['Perbukitan Vulkanik Agak Curam', 'Perbukitan Rendah Vulkanik Landai', 'Perbukitan Rendah Vulkanik Agak Curam','Dataran Rendah Vulkanik Landai','Dataran Rendah Pedalaman Vulkanik Curam','Dataran Rendah Vulkanik Agak Curam','Dataran Rendah Pedalaman Agak Curam','Dataran Rendah Vulkanik Curam','Dataran Rendah Pedalaman Vulkanik Landai'], // Label untuk setiap data
+                datasets: [{
+                  label: 'Persentase Luas', // Label untuk dataset
+                  data: [11, 16, 25, 14, 9, 17, 2, 4, 3], // Data untuk setiap label
+                  backgroundColor: [
+                    'rgba(230, 30, 0, 0.8)', // Warna untuk setiap slice
+                    'rgba(255, 95, 0, 0.8)',
+                    'rgba(255, 40, 0, 0.8)',
+                    'rgba(255, 211, 65, 0.8)',
+                    'rgba(255, 150, 190, 0.8)',
+                    'rgba(255, 167, 65, 0.8)',
+                    'rgba(255, 190, 150, 0.8)',
+                    'rgba(255, 127, 65, 0.8)',
+                    'rgba(255, 200, 120, 0.8)'
+                  ],
+                  hoverOffset: 4 // Jarak saat hover
+                }]
+              },
+              options: {
+                responsive: true, // Responsif terhadap ukuran layar
+                aspectRatio: 3.0, // Membuat aspek rasio lebar:tinggi menjadi 3:2
+                plugins: {
+                legend: {
+                position: 'right'
+                },
+                } 
+              }
+            });
+          </script>
+</div>
+
+<div class="container mx-auto mt-6 bg-white p-4 shadow rounded">
+    <h2 class="text-lg font-semibold mb-4">Data Tabel</h2>
+    <div class="overflow-y-auto h-80 border rounded"> <!-- Kontainer dengan scroll -->
+        <table>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Zonasi</td>
+                 <td class="px-4 py-2 border border-gray-300">Luas</td>
+                 <td class="px-4 py-2 border border-gray-300">Average</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Perbukitan Vulkanik Agak Curam</td>
+                 <td class="px-4 py-2 border border-gray-300">5348330</td>
+                 <td class="px-4 py-2 border border-gray-300">11%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Perbukitan Rendah Vulkanik Landai</td>
+                 <td class="px-4 py-2 border border-gray-300">7640457</td>
+                 <td class="px-4 py-2 border border-gray-300">16%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Perbukitan Rendah Vulkanik Agak Curam</td>
+                 <td class="px-4 py-2 border border-gray-300">12077274</td>
+                 <td class="px-4 py-2 border border-gray-300">25%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Dataran Rendah Vulkanik Landai</td>
+                 <td class="px-4 py-2 border border-gray-300">6564811</td>
+                 <td class="px-4 py-2 border border-gray-300">14%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Dataran Rendah Pedalaman Vulkanik Curam</td>
+                 <td class="px-4 py-2 border border-gray-300">4452646</td>
+                 <td class="px-4 py-2 border border-gray-300">9%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Dataran Rendah Vulkanik Agak Curam</td>
+                 <td class="px-4 py-2 border border-gray-300">8040097</td>
+                 <td class="px-4 py-2 border border-gray-300">17%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Dataran Rendah Pedalaman Vulkanik Agak Curam</td>
+                 <td class="px-4 py-2 border border-gray-300">810831</td>
+                 <td class="px-4 py-2 border border-gray-300">2%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Dataran Rendah Vulkanik Curam</td>
+                 <td class="px-4 py-2 border border-gray-300">1781703</td>
+                 <td class="px-4 py-2 border border-gray-300">4%</td>
+            </tr>
+            <tr>
+                 <td class="px-4 py-2 border border-gray-300">Dataran Rendah Pedalaman Vulkanik Landai</td>
+                 <td class="px-4 py-2 border border-gray-300">1471937</td>
+                 <td class="px-4 py-2 border border-gray-300">3%</td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </body>
+
+
+</html>
